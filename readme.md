@@ -6,3 +6,5 @@
     - PostgreSQL
     - ElephantSQL
     - Express
+    - Cors
+    - Winston
