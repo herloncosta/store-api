@@ -36,6 +36,7 @@ app.use("/sale", salesRouter);
 // tratamento de erro em todas as rotas
 app.use((err, req, res) => {
     logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);
+    res.status(400).send({ error: err.message });
 });
 
 app.listen(3000, () => console.log("API Started!"));
