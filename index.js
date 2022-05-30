@@ -34,7 +34,7 @@ app.use("/supplier", suppliersRouter);
 app.use("/sale", salesRouter);
 
 // tratamento de erro em todas as rotas
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);
     res.status(400).send({ error: err.message });
 });
