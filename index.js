@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import winston, { Logform } from "winston";
+import winston from "winston";
 import clientsRouter from "./routes/client.route.js";
 import productsRouter from "./routes/product.route.js";
 import suppliersRouter from "./routes/supplier.route.js";
@@ -18,7 +18,7 @@ global.logger = winston.createLogger({
         new winston.transports.Console(),
         new winston.transports.File({ filename: "store-api.log" }),
     ],
-    format: combine(label({ label: "store-api" }), timestamp(), Logform),
+    format: combine(label({ label: "store-api" }), timestamp(), logFormat),
 });
 
 const app = express();
