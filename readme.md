@@ -8,3 +8,7 @@
     - Express
     - Cors
     - Winston
+
+### Instalando e inicializando o projeto
+    - npm install
+    - node index.js
