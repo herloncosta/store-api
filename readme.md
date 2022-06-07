@@ -8,6 +8,7 @@
     - Express
     - Cors
     - Winston
+    - Nodemon
 
 ### Instalando e inicializando o projeto
     - npm install
