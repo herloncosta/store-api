@@ -45,7 +45,9 @@ async function updateSale(sale) {
 
     if (product.stock > 0) {
         sale = SaleRepository.insertSale(sale);
+        // remove produto do estoque
         product.stock--;
+        // atualiza estoque
         await ProductRepository.updateProduct(product);
         return sale;
     } else {
@@ -54,7 +56,17 @@ async function updateSale(sale) {
 }
 
 async function deleteSale(id) {
-    await SaleRepository.deleteSale(id);
+    const sale = await SaleRepository.getSale(id);
+    if (sale) {
+        const product = ProductRepository.getProduct(sale.product_id);
+        await SaleRepository.deleteSale(id);
+        // devolve o produto para o estoque
+        product.stock++;
+        // atualiza o estoque
+        await ProductRepository.updateProduct(product);
+    } else {
+        throw new Error("O id da venda informada não existe.");
+    }
 }
 
 export default {
