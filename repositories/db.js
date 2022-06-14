@@ -1,4 +1,7 @@
 import pg from "pg";
+import fs from "fs";
+
+const token = fs.readFileSync("access.db.txt", "utf8");
 
 async function connect() {
     if (global.connection) {
@@ -6,8 +9,8 @@ async function connect() {
     }
 
     const pool = new pg.Pool({
-        connectionString:
-            "postgres://ygoujsbe:sEjzAVLzvXHvPRbanv5QAxAZ3PWSR9EM@fanny.db.elephantsql.com/ygoujsbe",
+        connectionString: token,
+        // "postgres://ygoujsbe:sEjzAVLzvXHvPRbanv5QAxAZ3PWSR9EM@fanny.db.elephantsql.com/ygoujsbe",
     });
     global.connection = pool;
 

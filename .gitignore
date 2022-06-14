@@ -1,3 +1,4 @@
 /node_modules
 /store-api.log
 /requests.http
+/access.db.txt
